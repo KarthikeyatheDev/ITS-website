@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap (use a deployed absolute URL or the relative path)
+Sitemap: /sitemap.xml
+
+# Basic crawl guidelines. Customize per deployment if needed.
+Crawl-delay: 1

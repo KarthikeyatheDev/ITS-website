@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#E6EEF7"/>
+  <g fill="#0F172A" font-family="Inter, Arial, sans-serif">
+    <text x="60" y="220" font-size="48" font-weight="700">ITS South East Residency</text>
+    <text x="60" y="280" font-size="28" fill="#334155">Budget Hotel in Perumbakkam, Chennai</text>
+  </g>
+  <g fill="#0EA5A4">
+    <circle cx="1060" cy="160" r="80" opacity="0.12" />
+  </g>
+</svg>
