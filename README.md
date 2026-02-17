@@ -4,7 +4,7 @@ This repository contains a static website for a hotel built with Vite, React, Ty
 
 ## Contents
 - Source: `src/` — React components, pages, styles and assets
-- Public: `public/` — static assets served as-is (`robots.txt`, `sitemap.xml`, `og-image.svg`, `favicon.ico`)
+- Public: `public/` — static assets served as-is (`robots.txt`, `sitemap.xml`, `og-image.svg`, `favicon.svg`, `_redirects`)
 - Config: `vite.config.ts`, `tailwind.config.ts`, `tsconfig.json`
 
 ## Quick start (development)
@@ -52,6 +52,20 @@ The project uses ES module imports and a build step. Opening `index.html` via `f
 - `public/sitemap.xml` is present as a minimal placeholder. Replace or regenerate it to include your real URLs.
 - `public/robots.txt` references `/sitemap.xml` and allows crawling; update if you need custom crawl rules.
 - A local OG image placeholder exists at `public/og-image.svg`. Replace with your final social image and ensure the path is correct after deployment.
+ - The site is deployed to Netlify at: `https://itshotelwebsite.netlify.app` (canonical, OG and sitemap were updated to this domain).
+ - The original Lovable favicon was replaced with `public/favicon.svg`. If you still see the old icon, clear browser cache or verify the deployed `favicon.svg` is accessible.
+
+Netlify-specific notes
+- A `_redirects` file is included in `public/` to enable SPA routing (`/* /index.html 200`). Netlify will honor this on deploy.
+- After pushing changes to your Git repository or triggering a Netlify deploy, verify these URLs:
+	- `https://itshotelwebsite.netlify.app/robots.txt`
+	- `https://itshotelwebsite.netlify.app/sitemap.xml`
+	- `https://itshotelwebsite.netlify.app/og-image.svg`
+	- `https://itshotelwebsite.netlify.app/favicon.svg`
+
+Social preview verification
+- Use the Facebook Sharing Debugger: https://developers.facebook.com/tools/debug/ to refresh cached OG previews.
+- Use the Twitter Card Validator: https://cards-dev.twitter.com/validator to confirm Twitter preview.
 
 Performance tips
 - Images in `src/assets` should be optimized and converted to WebP/AVIF for better page speed.
@@ -81,31 +95,11 @@ Accessibility & indexability
 
 ## Deployment
 
-This is a static site — deploy the contents of `dist/` to any static host (Netlify, Vercel, GitHub Pages, S3 + CloudFront, etc.). Update canonical/OG URLs and ensure `robots.txt` / `sitemap.xml` point to your deployed domain.
+This is a static site — deploy the contents of `dist/` to any static host (Netlify, Vercel, GitHub Pages, S3 + CloudFront, etc.). For Netlify, push to your connected Git repo or drag the site to Netlify; Netlify will serve the `public/_redirects` file for SPA routing and the files in `public/` at the root of the deployed site.
 
-## Troubleshooting
-- If images do not appear after build, ensure asset imports in `src` resolve correctly and check the `dist` output paths.
-- If social previews do not update, confirm the deployed `og:image` path is accessible and use the platform's debugger (Facebook Sharing Debugger, Twitter Card Validator) to refresh.
+After deploy, update any domain settings (if using a custom domain) and confirm `rel="canonical"`, `og:url`, and `twitter:url` point to your final domain.
 
-## Contact / Next steps
 
-If you'd like, I can:
-- generate a full sitemap for this repo and commit it to `public/sitemap.xml`,
-- create an image-optimization script to produce WebP assets and update imports, or
-- add a small `postbuild` script to auto-generate the sitemap.
-
-Tell me which of the above you'd like me to implement and I'll update the repository.
-
-Requirements: Node.js and npm/yarn.
-
-```sh
-git clone <YOUR_GIT_URL>
-cd <YOUR_PROJECT_NAME>
-npm install
-npm run dev
-```
-
-To view the static site without Node, open `index.html` in your browser from the `public` folder or the project root (depending on your build output).
 
 ## Technologies
 
@@ -114,8 +108,3 @@ To view the static site without Node, open `index.html` in your browser from the
 - React
 - shadcn-ui
 - Tailwind CSS
-
-## Notes
-
-- All references to external platform-specific services have been removed. Replace any hosting URLs with your preferred provider when deploying.
-- For standalone usage, open `index.html` in a browser or use a simple static server such as `npx http-server`.
